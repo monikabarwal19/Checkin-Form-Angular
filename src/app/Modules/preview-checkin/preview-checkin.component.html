@@ -1,0 +1,86 @@
+<section class="cont-wrap preview-wrap" id="preview-outer">    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 cont-form">
+                <!-- {{checkinSubmit | json}} -->
+                <div class="row form-box">
+                    <h3>ID Proof Details</h3>
+                    <div class="col-sm-12" *ngFor="let person of persons; let i=index">
+                        <h4>Person {{i+1}}</h4>
+                        <p>Name: &nbsp;&nbsp;&nbsp;&nbsp; {{person.name}}</p>
+                        <p>ID Proof</p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                    <img *ngIf="person.frontMedia.idProofImage==''" src="assets/images/insta.png" class="img-responsive">
+                                    <img *ngIf="person.frontMedia.idProofImage!=''" src="{{uploadedFileBase}}{{person.frontMedia.idProofImage}}" alt="" class="img-responsive">
+                                <p style="margin-top:15px;" class="text-center">Front View</p>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                    <img *ngIf="person.backMedia.idProofImage==''" src="assets/images/insta.png" class="img-responsive">
+                                    <img *ngIf="person.backMedia.idProofImage!=''" src="{{uploadedFileBase}}{{person.backMedia.idProofImage}}" alt="" class="img-responsive">
+                                <p style="margin-top:15px;" class="text-center">Back View</p>
+                            </div>
+                        </div><!-- row end -->
+                    </div>
+                </div><!-- form-box end-->
+                <div class="row form-box">
+                    <h3>Trip Details</h3>
+                    <div class="col-sm-12">
+                        <p class="trip-detail"><label>Booking Id</label><span>{{checkinSubmit.tripDetail.refNumber}}</span></p>
+                        <p class="trip-detail"><label>No. of Rooms</label><span>{{checkinSubmit.tripDetail.noOfRooms}}</span></p>
+                        <p class="trip-detail"><label>No. of Person</label><span>{{checkinSubmit.tripDetail.noOfPerson}}</span></p>
+                        <p class="trip-detail"><label>Purpose of Visit</label><span></span></p>
+                        <p class="trip-detail"><label>Booking Resource</label><span>{{checkinSubmit.tripDetail.travelAgent}}</span></p>
+                        <p class="trip-detail"><label>Arrived From</label><span>{{checkinSubmit.tripDetail.arrivedFrom}}</span></p>
+                        <p class="trip-detail"><label>Next Destination</label><span>{{checkinSubmit.tripDetail.nextDestination}}</span></p>
+                        <h4>Arrival Details</h4>
+                        <p class="trip-detail"><label>Date</label><span>{{checkinSubmit.tripDetail.arrivalDate}}</span></p>
+                        <p class="trip-detail"><label>Time</label><span>{{checkinSubmit.tripDetail.arrivalTime}}</span></p>
+                        <h4>Departure Details</h4>
+                        <p class="trip-detail"><label>Date</label><span>{{checkinSubmit.tripDetail.departureDate}}</span></p>
+                        <p class="trip-detail"><label>Time</label><span>{{checkinSubmit.tripDetail.departureTime}}</span></p>
+                    </div>
+                </div><!-- form-box end-->
+                <div class="row form-box">
+                    <h3>Mode of Payment (For hotel services)</h3>
+                    <div class="col-sm-12">
+                        <p class="trip-detail">
+                            <label>Mode of Payment</label>
+                            <span *ngIf="checkinSubmit.tripDetail.paymentDetail.paymentType=='CASH'">CASH</span>
+                            <span *ngIf="checkinSubmit.tripDetail.paymentDetail.paymentType=='CARD'">CARD</span>
+                        </p>
+                        <p *ngIf="checkinSubmit.tripDetail.paymentDetail.paymentType=='CARD'" class="trip-detail"><label>Card Number</label><span>{{card1}}-XXXX-XXXX-{{card4}}</span></p>
+                    </div>
+                </div><!-- form-box end-->
+                <div class="row form-box">
+                    <h3>Billing Instruction</h3>
+                    <p>EP INET room and taxs to MMT extras on direct payment inclusive of wifi</p>
+                    <form #previewForm="ngForm">
+                        <div class="form-group">
+                            <input required name="termsCheck" #termsCheck1="ngModel" [(ngModel)]="termsCheck" type="checkbox">&nbsp;&nbsp;I have read & accepted the Terms & Conditions.
+                        </div>
+                        <button (click)="previewCheckin(previewForm.value)" class="btn-cont" type="button" data-toggle="modal" data-target="#myModal">Submit</button>
+                    </form>
+                </div><!-- form-box end-->
+            </div><!-- col-md-8 end -->
+        </div><!-- row1 end -->
+    </div>    
+</section>
+
+<div id="myModal" class="modal fade" role="dialog" *ngIf="showModal">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Checkin</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{result}}</p>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>

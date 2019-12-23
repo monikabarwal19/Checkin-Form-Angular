@@ -1,0 +1,238 @@
+<div class="navbar-fixed-top" *ngIf="showApp">
+    <div class="appLink">
+        <div id="closeLink" class="col-xs-2">
+            <a href="#" (click)="closeGetApp()"><img src="assets/images/close-icon.png" alt="Close"></a>
+        </div>
+        <div class="col-xs-10">
+            <a href="{{getAppUrl}}" class="btn btn-cont pull-right">Get App</a>
+        </div>
+    </div>
+</div><!-- navbar-fixed-top end -->
+<section class="cont-wrap" id="contact-outer">
+    <div class="container">        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" *ngIf="errorStatus==false">                
+                <form class="cont-form" #checkinForm="ngForm" (ngSubmit)="checkinForm.form.valid && previewForm(checkinForm.value)" novalidate>  
+                    <div class="row" *ngIf="param=='' || param==undefined || param==null">
+                        <div class="invalid-feedback is-invalid col-xs-12">
+                            Something went wrong!!
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row form-box">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Booking Id</label>
+                                <input required type="text" #bookingId="ngModel" name="refNumber" [(ngModel)]="refNumber" autocomplete="off" [ngClass]="{'is-invalid': checkinForm.submitted && bookingId.invalid}" class="form-control" >
+                                <div *ngIf="checkinForm.submitted && bookingId.invalid" class="invalid-feedback">
+                                    <div *ngIf="bookingId.errors.required"><p></p>Booking Id is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>No. of Rooms</label><br/>
+                                <button type="button" (click)="countRoom(noOfRooms.value,'minus','room')" class="form-control controls">-</button>                            
+                                <input required readonly class="plus" #noOfRooms="ngModel" name="noOfRoom" [(ngModel)]="noOfRoom" [ngClass]="{'is-invalid': checkinForm.submitted && noOfRooms.invalid}">
+                                <button type="button" (click)="countRoom(noOfRooms.value,'plus','room')" class="form-control controls">+</button>
+                                <div *ngIf="checkinForm.submitted && noOfRooms.invalid">
+                                    <div *ngIf="noOfRooms.errors.required"><p></p>No. of Rooms is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>No. of Persons</label><br/>
+                                <button type="button" (click)="countRoom(noOfPerson.value,'minus','person')" class="form-control controls">-</button>
+                                <input required readonly class="plus" #noOfPerson="ngModel" name="noOfPerson" [(ngModel)]="noOfPersons" [ngClass]="{'is-invalid': checkinForm.submitted && noOfPerson.invalid}">
+                                <button type="button" (click)="countRoom(noOfPerson.value,'plus','person')" class="form-control controls">+</button>
+                                <div *ngIf="checkinForm.submitted && noOfPerson.invalid">
+                                    <div *ngIf="noOfPerson.errors.required"><p></p>No. of Person is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <div class="input-group">
+                                    <input readonly type="text" name="txt_name" autocomplete="off" class="form-control" placeholder="Add ID Proof">
+                                    <div class="input-group-append">
+                                        <button (click)="addProof(noOfPerson.value,noOfRooms.value)" class="btn add-photo btn-outline-secondary" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="radio-wrap">Purpose of Visit</label>
+                                <div class="purpose">
+                                    <input type="radio" id="business" name="visitRadio" [(ngModel)]="visitRadio" value="business" checked="checked">
+                                    <label for="business" class="purpose-radio">Business</label>
+                                    <input type="radio" id="leisure" name="visitRadio" [(ngModel)]="visitRadio" value="leisure">
+                                    <label for="leisure" class="purpose-radio">Leisure</label> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Company/Travel Agent</label> 
+                                <select class="form-control" #travelAgentId1="ngModel" name="travelAgentId" [(ngModel)]="travelAgentId"  [ngClass]="{'is-invalid': checkinForm.submitted && travelAgentId1.invalid}">
+                                    <option>Booking Source</option>
+                                    <option *ngFor="let agent of travelAgent" [value]="agent.id">{{agent.name}}</option>
+                                </select>
+                                <div *ngIf="checkinForm.submitted && travelAgentId1.invalid" class="invalid-feedback">
+                                    <div *ngIf="travelAgentId1.errors.required"><p></p>Booking Source is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Arrived Form</label>
+                                <input type="text" #arrivedFrom1="ngModel" name="arrivedFrom" [(ngModel)]="arrivedFrom" placeholder="Arrived Form" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Next Destination</label>
+                                <input type="text" #nextDestination1="ngModel" name="nextDestination" [(ngModel)]="nextDestination" placeholder="Next Destination" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-box">
+                        <h3>Arrived Details</h3>
+                        <div class="col-sm-6">
+                            <div class="form-group date-wrap">
+                                <label>Date</label>
+                                <ng-datepicker (ngModelChange)="dateChange($event)" class="form-control" #arrivalD="ngModel"  name="arrivalDate" [(ngModel)]="arrivalDate"  [options]="options" [ngClass]="{'is-invalid': checkinForm.submitted && arrivalD.invalid}"></ng-datepicker>
+                                <div *ngIf="checkinForm.submitted && arrivalD.invalid" class="invalid-feedback">
+                                    <div *ngIf="arrivalD.errors.required"><p></p>Arrival Date is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Time</label>
+                                <input atp-time-picker #arrivalT="ngModel" [(ngModel)]="arrivalTime" name="arrivalTime"  placeholder="Time" class="form-control" [ngClass]="{'is-invalid': checkinForm.submitted && arrivalT.invalid}">
+                                <div *ngIf="checkinForm.submitted && arrivalT.invalid" class="invalid-feedback">
+                                    <div *ngIf="arrivalT.errors.required"><p></p>Arrival Time is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Need a Pick/Drop?</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                Yes &nbsp;
+                                <input type="radio" #pickupDropArrivalY="ngModel" name="pickupDropArrival" [(ngModel)]="pickDropArrival" value="true">
+                                No &nbsp;
+                                <input type="radio" #pickupDropArrivalN="ngModel" name="pickupDropArrival" [(ngModel)]="pickDropArrival" value="false">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-12" *ngIf="pickupDropArrivalY.value == 'true'">
+                            <div class="form-group">
+                                <label>Location/Flight/Train/Other Details</label>
+                                <input required type="text" #arrivalDe="ngModel" name="arrivalDetail" [(ngModel)]="arrivalDetail" autocomplete="off" [ngClass]="{'is-invalid': checkinForm.submitted && arrivalDe.invalid}"  class="form-control">
+                                <div *ngIf="checkinForm.submitted && arrivalDe.invalid" class="invalid-feedback">
+                                    <div *ngIf="arrivalDe.errors.required"><p></p>Arrival Details is required</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-box">
+                        <h3>Departure Details</h3>
+                        <div class="col-sm-6">
+                            <div class="form-group date-wrap">
+                                <label>Date</label>
+                                <ng-datepicker class="form-control" #departureD="ngModel" name="departureDate" [(ngModel)]="departureDate" [options]="dOption" [ngClass]="{'is-invalid': checkinForm.submitted && departureD.invalid}"></ng-datepicker>
+                                <div *ngIf="checkinForm.submitted && departureD.invalid" class="invalid-feedback">
+                                    <div *ngIf="departureD.errors.required"><p></p>Departure Date is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Time</label>
+                                <input atp-time-picker #departureT="ngModel" name="departureTime" [(ngModel)]="departureTime" placeholder="Time" class="form-control" [ngClass]="{'is-invalid': checkinForm.submitted && departureT.invalid}">
+                                <div *ngIf="checkinForm.submitted && departureT.invalid" class="invalid-feedback">
+                                    <div *ngIf="departureT.errors.required"><p></p>Departure Time is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Need a Pick/Drop?</label>                      
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                Yes &nbsp;
+                                <input type="radio" #pickupDropDepartureY="ngModel" name="pickupDropDeparture" [(ngModel)]="pickDropDeparture" value="true">
+                                No &nbsp;
+                                <input type="radio" #pickupDropDepartureN="ngModel" name="pickupDropDeparture" [(ngModel)]="pickDropDeparture" value="false">
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="pickupDropDepartureY.value=='true'">
+                            <div class="form-group">
+                                <label>Location/Flight/Train/Other Details</label>
+                                <input required type="text" #departureDe="ngModel" name="departureDetail" [(ngModel)]="departureDetail" [ngClass]="{'is-invalid': checkinForm.submitted && departureDe.invalid}" class="form-control" >
+                                <div *ngIf="checkinForm.submitted && departureDe.invalid" class="invalid-feedback">
+                                    <div *ngIf="departureDe.errors.required"><p></p>Departure Detail is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-box">
+                        <h3>Mode of Payment</h3>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                Cash &nbsp;
+                                <input type="radio" #paymentTypeCash="ngModel" [(ngModel)]="paymentType" name="paymentType" value="true">
+                                Credit Card &nbsp;
+                                <input type="radio" #paymentTypeCredit="ngModel" [(ngModel)]="paymentType" name="paymentType" value="false">
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="paymentType=='false'">
+                            <div class="form-group">
+                                <label>Credit Card</label><br>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <input required type="text" #card1="ngModel" name="cardNumber1" [(ngModel)]="cardNumber1" [ngClass]="{'is-invalid': checkinForm.submitted && card1.invalid}" class="form-control"  minlength="4" maxlength="4" onkeydown="return ( event.ctrlKey || event.altKey || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (95<event.keyCode && event.keyCode<106) || (event.keyCode==8) || (event.keyCode==9) || (event.keyCode>34 && event.keyCode<40) || (event.keyCode==46) )">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input required minlength="4" maxlength="4" type="text" #card2="ngModel" name="cardNumber2" [(ngModel)]="cardNumber2" [ngClass]="{'is-invalid': checkinForm.submitted && card2.invalid}" class="form-control" onkeydown="return ( event.ctrlKey || event.altKey || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (95<event.keyCode && event.keyCode<106) || (event.keyCode==8) || (event.keyCode==9) || (event.keyCode>34 && event.keyCode<40) || (event.keyCode==46) )">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input required minlength="4" maxlength="4" type="text" #card3="ngModel" name="cardNumber3" [(ngModel)]="cardNumber3" [ngClass]="{'is-invalid': checkinForm.submitted && card3.invalid}" class="form-control" onkeydown="return ( event.ctrlKey || event.altKey || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (95<event.keyCode && event.keyCode<106) || (event.keyCode==8) || (event.keyCode==9) || (event.keyCode>34 && event.keyCode<40) || (event.keyCode==46) )">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input required minlength="4" maxlength="4" type="text" #card4="ngModel" name="cardNumber4" [(ngModel)]="cardNumber4" [ngClass]="{'is-invalid': checkinForm.submitted && card4.invalid}" class="form-control" onkeydown="return ( event.ctrlKey || event.altKey || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (95<event.keyCode && event.keyCode<106) || (event.keyCode==8) || (event.keyCode==9) || (event.keyCode>34 && event.keyCode<40) || (event.keyCode==46) )">
+                                    </div>
+                                    <div *ngIf="checkinForm.submitted && card1.invalid && card2.invalid && card3.invalid && card4.invalid" class="invalid-feedback col-xs-12">
+                                        <div *ngIf="card1.errors.required && card2.errors.required && card3.errors.required && card4.errors.required"><p></p>Card Number is required</div>
+                                    </div>
+                                </div>         
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">                               
+                                <input type="submit" value="Save & Next" class="btn btn-cont" [disabled]="(param=='' || param==undefined || param==null) || personDetail==''">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12" *ngIf="errorStatus">                
+                <br/><br/><br/><br/><br/>
+                <h3 class="text-center">{{errorText}}</h3>
+                <br/><br/><br/><br/><br/>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+.cont-wrap {
+	padding: 30px 0;
+}
+.cont-form {
+	text-align: left;
+	margin-top: 50px;
+	position: relative;
+}
+.cont-form h3 {
+	font-size: 20px;
+	color: #3a132f;
+	font-weight: bold;
+	line-height: normal;
+	padding: 12px 15px;
+	margin: -20px -15px 20px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1)
+}
+.preview-wrap h4 {
+    font-size: 16px;
+}
+.cont-form .form-box {
+	padding: 20px 15px;
+	border-radius: 5px;
+	background: #ffffff;
+	margin-bottom: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.2);	
+}
+.cont-form .form-group {
+	font-style: normal;
+	position: relative;
+	margin-bottom: 25px;
+}
+.btn-cont {
+	font-size: 14px;
+	color: #ffffff;
+	line-height: normal;
+	font-weight: 500;
+	border: none;
+	padding: 9px 20px;
+	background: #3a132f;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+	-ms-transition: all 0.5s ease 0s;
+	width: 100%;
+	max-width: 35%;
+	margin: 15px auto;
+	display: block;
+}
+.btn-cont:focus {
+	color: #ffffff;
+}
+.btn-cont:hover {
+	color: #ffffff;
+	background: #3a132f;
+}
+.trip-detail {
+    margin: 0 0 5px;
+    font-weight: normal;
+}
+.trip-detail label {
+    font-weight: normal;
+    min-width: 175px;
+}
+.trip-detail span {
+    width: calc(100% - 175px);
+}
+@media (max-width: 767px) {
+	.cont-wrap {
+	   padding: 20px 0;
+	}
+	.cont-form {
+		margin: 50px 20px 0;
+	}
+	.btn-cont {
+		width: 45%;
+		max-width: 100%;
+	}
+}
+@media (max-width: 480px) {	
+	.btn-cont {
+		width: auto;
+    }
+    .trip-detail label {
+        min-width: 135px;
+    }
+    .trip-detail span {
+        font-size: 13px;
+        width: calc(100% - 135px);
+    }
+}

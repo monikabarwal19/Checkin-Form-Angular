@@ -1,0 +1,64 @@
+<section class="cont-wrap" id="contact-outer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- <h3>{{proofForm.value | json}}</h3>
+                <h3>{{proofForm.form.valid}}</h3> -->
+                <form name="contact-form" id="contact-form" class="cont-form" #proofForm="ngForm" (ngSubmit)="proofForm.form.valid && savePerson()" novalidate>
+                    <div class="panel-group">                                              
+                        <div class="panel panel-default row form-box" *ngFor="let person of persons; let i=index">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" class="collapsed" href="#Person{{i}}"><i class="fa fa-user" aria-hidden="true"></i> Person {{i+1}}</a>
+                            </h3>
+                            <div id="Person{{i}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input required type="text" #nameModel="ngModel" name="person{{i}}" [(ngModel)]="person.name" placeholder="Name" class="form-control">
+                                            <ng-container *ngIf="proofForm.submitted && nameModel.errors?.required">
+                                                <div class="invalid-feedback"> Name is required.</div>
+                                            </ng-container>
+                                        </div>                                       
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Valid Identity Proof<span class="small-text">(Passport, Driving Licence)</span></label>
+                                            <div class="row">
+                                                <div class="col-xs-6 text-center">
+                                                    <label for="filefront{{i}}" class="custom-file-upload">
+                                                        <img *ngIf="person.frontMedia.idProofImage==''" src="assets/images/insta.png" class="img-responsive">
+                                                        <img *ngIf="person.frontMedia.idProofImage!=''" src="{{uploadedFileBase + persons[i].frontMedia.idProofImage}}" alt="" class="img-responsive">
+                                                    </label>Front View
+                                                   <input id="filefront{{i}}" type="file" pattern="'.pdf,.jpeg,.jpg,.png'" accept="image/*" (change)="fileProgress(i,'FRONT',$event)">
+                                                   <ng-container *ngIf=" fronRequired && person.frontMedia.idProofImage==''">
+                                                        <div class="invalid-feedback">Front View image is required.</div>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="col-xs-6 text-center">
+                                                    <label for="fileback{{i}}" class="custom-file-upload">
+                                                        <img *ngIf="person.backMedia.idProofImage==''" src="assets/images/insta.png" class="img-responsive">
+                                                        <img *ngIf="person.backMedia.idProofImage!=''" src="{{uploadedFileBase + persons[i].backMedia.idProofImage}}" alt="" class="img-responsive">
+                                                    </label>Back View
+                                                    <input id="fileback{{i}}" type="file" pattern="'.pdf,.jpeg,.jpg,.png'" accept="image/*" (change)="fileProgress(i,'BACK',$event)">
+                                                </div>
+                                            </div><p style="margin-top:10px;">Note - We Request you to attach a Valid Self-attested ID stating 'For Check-in Purpose only'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group text-center">
+                                <input routerLink="/checkin" [queryParams]="{ param : param }" type="button" value="Back" class="btn btn-cont"> &nbsp; 
+                                <input type="submit" value="Save" class="btn btn-cont">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

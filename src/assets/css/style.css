@@ -1,0 +1,295 @@
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 1.57;
+	letter-spacing: 0.5px;
+	color: #000000;
+	background-color: #f9f9f9;
+}
+body.getAppAdd {
+    padding-top: 63px;
+}
+/* Webfont: Lato-Bold */@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../fonts/Lato-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Lato-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Lato-Bold.woff2') format('woff2'), /* Modern Browsers */
+         url('../fonts/Lato-Bold.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/Lato-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-Medium */@font-face {
+    font-family: 'Lato-Medium';
+    src: url('../fonts/Lato-Medium.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Lato-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Lato-Medium.woff2') format('woff2'), /* Modern Browsers */
+         url('../fonts/Lato-Medium.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/Lato-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-Regular */@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+         url('../fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/Lato-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-Semibold */
+@font-face {
+    font-family: 'Lato-Semibold';
+    src: url('../fonts/Lato-Semibold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Lato-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Lato-Semibold.woff2') format('woff2'), /* Modern Browsers */
+         url('../fonts/Lato-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/Lato-Semibold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+/*for ie8{
+	background:rgba(255, 255, 255, 0.56);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4cffffff', endColorstr='#4cffffff'); 
+}*/
+/*also use rgba to hex conertor*/
+hr{
+	border-color: #ccc;
+}
+.thumbnail{
+	margin-bottom: 10px;
+}
+.img-responsive{
+	display: inline-block;
+}
+figure {
+	margin:0;
+	padding:0;
+}
+button {
+	outline: none !important;
+}
+::-moz-placeholder,
+:-ms-input-placeholder,
+::-webkit-input-placeholder {
+	height: 36px;
+}
+a {
+	color: #a8abab;
+	text-decoration: none;
+	transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+button {
+	transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+a:hover, a:focus {
+	color: #0d3a43;
+	outline: none;
+	text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-weight: bold;
+	line-height: 1.1;
+	color: inherit;
+}
+.button1 {
+	float: left;
+	font-size: 20px;
+	color: #ffffff;
+	line-height: 30px;
+	border: none;
+	border-radius: 0;
+	padding: 7px 20px;
+	background: #5e979f;
+	letter-spacing: 1px;
+	transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+	-ms-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+}
+.button1:focus {
+	color: #ffffff;
+}
+.button1:hover {
+	color: #ffffff;
+	background: #0d3a43;
+}
+.heading {
+	font-size: 30px;
+	color: #000000;
+	font-weight: bold;
+	line-height: 1.3;
+	padding-top: 15px;
+	position: relative;
+	margin: 0 0 20px;
+	letter-spacing: 1px;
+	padding-bottom: 15px;
+	text-transform: uppercase;
+}
+.invalid-feedback {
+    color: red;
+}
+.is-invalid {
+    border: 1px solid red !important;
+}
+@media (max-width: 991px) {
+	.heading {
+		font-size: 26px;
+		margin: 15px 0;
+	}
+}
+@media (max-width: 767px) {
+	.heading {
+		font-size: 24px;
+		margin: 10px 0;
+	}
+}
+@media (max-width: 480px) {
+	.heading {
+		font-size: 20px;
+	}
+}
+.list1 {
+	padding-left: 16px;
+}
+.list1 li {
+	line-height: 24px;
+}
+
+/*--------------------------- Header files -------------------------*/
+.mainHeader {
+	padding: 15px 0;
+	font-size: 16px;
+	color: #ffffff;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: normal;
+	background: #3a132f;
+}
+.mainHeader img {
+	width: 75px;
+	display: inline-block;
+}
+.mainHeader .logo .small-logo {
+	width: 40px;	
+	height: auto;	
+	display: inline-block;
+}
+@media only screen and (max-width:767px) {	
+	.mainHeader {
+		text-align: center;
+		padding: 25px 0;
+		/* padding: 25px 0 13px; */
+	}
+}
+
+/*-------- common files in header & footer --------*/
+.logo {
+    font-size: 22px;
+	color: #ffffff;
+	font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.44px;	
+}
+.logo a {
+	color: #ffffff;
+	display: inline-block;
+}
+.logo a img {
+	width: 75px;
+	height: 41px;
+	display: block;
+}
+.logo span a {
+    font-size: 12px;
+	color: rgba(255, 255, 255, 0.85);
+	font-weight: normal;
+	display: block;
+	padding-top: 5px;
+}
+.header-links {
+	text-align: right;
+	padding: 10px 15px 0;
+}
+.header-links a {
+	display: inline-block;
+	color: rgba(255, 255, 255, 0.6);
+	margin-left:30px;
+}
+.header-links a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+.header-links a:first-child {
+    margin-left: 0;
+}
+.header-links a img {
+	opacity: 0.6;
+	margin-right: 7px;
+	display: inline-block;
+}
+.header-links a:hover img {
+	opacity: 1;
+}
+.header-links a:first-child img {
+	width: 18px;
+	height: 18px;
+}
+.header-links a:last-child img {
+	width: 20px;
+	height: 15px;
+}
+@media only screen and (max-width:1100px){
+	.header-links a {
+		margin-left: 15px;
+	}
+}
+@media only screen and (max-width:991px) {
+	.header-links a {
+        margin-left: 30px;
+        margin-bottom: 12px;
+	}
+}
+@media only screen and (max-width:767px) {	
+	.header-links {
+		display: none;
+		text-align: center;
+		padding: 25px 15px 0;
+	}
+	.header-links a {
+		margin-left: 25px;	
+	}
+}
+@media only screen and (max-width:479px){
+	.header-links a {
+		display: block;
+		margin-left: 0;
+	}
+	body {
+		font-size: 15px;
+	}
+}
+@media only screen and (min-width:768px) and (max-width:992px){
+	.container {
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+} 
+

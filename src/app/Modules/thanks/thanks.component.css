@@ -1,0 +1,28 @@
+.btn-cont {
+	font-size: 14px;
+	color: #ffffff;
+	line-height: normal;
+	font-weight: 500;
+	border: none;
+	padding: 9px 20px;
+	background: #3a132f;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+	-ms-transition: all 0.5s ease 0s;
+	width: 100%;
+	max-width: 35%;
+	margin: 15px auto;
+	display: block;
+}
+.btn-cont:focus {
+	color: #ffffff;
+}
+.btn-cont:hover {
+	color: #ffffff;
+	background: #3a132f;
+}

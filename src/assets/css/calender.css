@@ -1,0 +1,80 @@
+
+.date-wrap .ngx-datepicker-container .ngx-datepicker-input {
+    padding: 4px 0 0;
+    font-size: 14px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.8);
+    outline: 0 !important;
+    border: none !important;
+    background: transparent;
+	box-shadow: none;
+	cursor: default;
+}
+.date-wrap .ngx-datepicker-container .ngx-datepicker-calendar-container {
+    width: 100% !important;
+    background: #fff !important;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4) !important;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    z-index: 999 !important;
+}
+.date-wrap .ngx-datepicker-container .ngx-datepicker-calendar-container .topbar-container {
+    border-bottom: none !important;
+}
+.date-wrap .ngx-datepicker-container .ngx-datepicker-calendar-container .topbar-container .topbar-title {
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+.date-wrap .ngx-datepicker-container .ngx-datepicker-calendar-container .topbar-container svg g {
+    fill: #3a132f !important;
+}
+.date-wrap .main-calendar-container .main-calendar-day-names,
+.date-wrap .main-calendar-container .main-calendar-days .day-unit.is-disabled {
+	color: rgba(0, 0, 0, 0.8) !important;
+}
+.date-wrap .main-calendar-container .main-calendar-days .day-unit.is-today,
+.date-wrap .ngx-datepicker-calendar-container .main-calendar-days .day-unit.is-selected,
+.date-wrap .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit:hover{
+	background: #3a132f !important;
+}
+.date-wrap .ngx-datepicker-calendar-container .main-calendar-days .day-unit.is-disabled:hover{
+	background: transparent !important;
+}
+
+/*----------- Timer Css ---------*/
+
+#time-picker-wrapper.light #time-picker .time-picker-header {
+    border-bottom: none !important;
+    background: #3a132f !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-header div.selected,
+#time-picker-wrapper.light #time-picker .time-picker-clock > button.active,
+#time-picker-wrapper.light #time-picker .time-picker-header .time-picker-selected-ampm div.selected {
+    color: #fff !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-header .time-picker-selected-time,
+#time-picker-wrapper #time-picker .time-picker-header .time-picker-selected-ampm div{
+	color: rgba(255,255,255,0.6) !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-clock > button.active,
+#time-picker-wrapper.light #time-picker .time-picker-clock .time-picker-clock-arrow,
+#time-picker-wrapper.light #time-picker .time-picker-clock .time-picker-clock-arrow span, 
+#time-picker-wrapper.light #time-picker .time-picker-clock .time-picker-clock-origin{
+	background: #3a132f !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-clock > button {
+	color: rgba(0,0,0,0.8) !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-footer {
+    border-top: none !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-footer button {
+    background: rgba(58, 19, 47, 0.7) !important;
+    color: #ffffff !important;
+    padding: 8px 10px !important;
+}
+#time-picker-wrapper.light #time-picker .time-picker-footer button:hover {
+    background: rgba(58, 19, 47, 1) !important;
+}
